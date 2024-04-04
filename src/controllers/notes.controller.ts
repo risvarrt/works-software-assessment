@@ -49,7 +49,7 @@ export const getNotes = async (req: Request, res: Response): Promise<void> => {
       // Find and update a note by its ID
       const updatedNote = await NoteModel.findByIdAndUpdate(
         req.params.id,
-        req.body,
+        {...req.body, updatedAt: new Date()},
         { new: true }
       );
       if (!updatedNote) {
